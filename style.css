@@ -1,0 +1,235 @@
+* {
+  box-sizing: border-box;
+}
+html {
+  font-family: "Inter", sans-serif;
+}
+@supports (font-variation-settings: normal) {
+  html {
+    font-family: "Inter var", sans-serif;
+  }
+}
+
+:root {
+  --lighter-grey: #f4f5f8;
+  --light-grey: #e7e9ef;
+  --grey: #d4d6dd;
+  --dark-grey: #b0b3bb;
+  --darker-grey: #798092;
+}
+
+body {
+  overflow-y: scroll;
+}
+header, main, footer {
+  max-width: 800px;
+  margin: auto;
+  width: 100%;
+}
+main {
+  margin-bottom: 5rem;
+}
+h1 {
+  font-size: 3rem;
+  text-align: center;
+}
+
+.emoji {
+  color: transparent;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+#pizza-emoji {  background-image: url(twemoji/pizza.svg);  }
+#abacus-emoji {   background-image: url(twemoji/abacus.svg);  }
+
+#add-pizza {
+  line-height: 1;
+  font-family: inherit;
+  font-weight: 400;
+  font-size: 4rem;
+  color: var(--grey);
+  border: 5px dashed var(--grey);
+  padding: .5rem;
+  outline: 0;
+  width: 100%;
+  cursor: pointer;
+  background-color: var(--lighter-grey);
+  font-feature-settings: "case" 1;
+}
+#add-pizza:is(:hover, :active) {
+  background-color: var(--light-grey);
+  border-color: var(--dark-grey);
+  color: var(--dark-grey);
+}
+#add-pizza:is(:focus, :focus-within) {
+  outline: 1px solid #333;
+}
+
+.pizza input[type="text"] {
+  font: inherit;
+  display: inline;
+  appearance: none;
+  color: inherit;
+  border: 0;
+  padding: 0;
+  background: none;
+}
+
+.pizza {
+  display: grid;
+  padding: .5rem;
+  width: 100%;
+  border: 5px solid var(--grey);
+  margin-bottom: 1rem;
+  grid-template-columns: 1fr 2fr 1fr 2fr auto;
+  align-items: center;
+}
+@media screen and (max-width: 550px) {
+  .pizza {
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 1fr 1fr;
+  }
+  .pizza > .amount {
+    grid-column: 1 / 3;
+  }
+}
+.pizza > * {
+  justify-self: center;
+}
+
+.pizza > .amount {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+}
+.pizza > .circle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 5px solid var(--light-grey);
+  border-radius: 100%;
+  font-size: 2rem;
+  font-weight: 700;
+  width: 6rem;
+  height: 6rem;
+}
+.pizza > .circle::before {
+  content: "";
+  position: absolute;
+  border-bottom: 5px dashed var(--light-grey);
+  width: 100%;
+  left: 0;
+  top: 50%;
+  transform: rotate(15deg);
+  height: 0;
+  z-index: -1;
+}
+.pizza > .circle::after {
+  content: "u";
+  position: absolute;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 3rem;
+}
+.pizza > .circle .diameter {
+  width: 100%;
+  text-align: center;
+}
+
+.pizza > .area {
+  display: inline-block;
+}
+.pizza > .area > .area-value::before {
+  content: "Total area: ";
+  display: block;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--dark-grey);
+}
+.pizza > .area > .area-value {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.pizza > .area > .area-value::after {
+  content: " u²";
+}
+
+.pizza > .whole-cost {
+  border: 5px solid var(--light-grey);
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+  width: 5rem;
+  height: 5rem;
+}
+.pizza > .whole-cost::before {
+  content: "$";
+  position: absolute;
+  color: var(--light-grey);
+  z-index: -1;
+  font-size: 4rem;
+  width: 100%;
+  text-align: center;
+  font-weight: 500;
+}
+.pizza > .whole-cost > .whole-price {
+  text-align: center;
+  width: 100%;
+}
+
+.pizza > .unit-cost {
+  display: inline-block;
+}
+.pizza > .unit-cost::before {
+  content: "Price per u²: ";
+  display: block;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--dark-grey);
+}
+.pizza > .unit-cost > .unit-price {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.pizza > .unit-cost > .unit-price::before {
+  content: "$";
+  color: var(--dark-grey);
+  font-size: 1rem;
+}
+
+.pizza > .amount > button {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 0;
+  color: transparent;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23b0b3bb' d='M7.41,15.41L12,10.83L16.59,15.41L18,14L12,8L6,14L7.41,15.41Z'/%3E%3C/svg%3E");
+}
+.pizza > .amount > button:is(:hover, :active) {
+  background-color: var(--light-grey);
+}
+.pizza > .amount > .decrease-pizzas {
+  transform: rotateX(180deg);
+}
+
+footer .sign {
+  text-align: right;
+  color: var(--dark-grey);
+}
+a[href] {
+  color: var(--darker-grey);
+  text-decoration: none;
+}
+a[href]:is(:active, :hover, :focus) {
+  text-decoration: underline;
+}

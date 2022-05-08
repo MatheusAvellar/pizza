@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <title>Pizza calculator</title>
+  <meta content="Matheus Avellar" name="author">
+  <!-- <meta name="description" content=""> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <link rel="preconnect" href="https://rsms.me" crossorigin>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="icon" type="image/svg+xml" href="twemoji/pizza.svg">
+</head>
+<body>
+  <header>
+    <h1>
+      <span class="emoji" id="pizza-emoji">🍕</span>
+      <span class="emoji" id="abacus-emoji">🧮</span>
+    </h1>
+  </header>
+  <main>
+    <section id="pizza-list"></section>
+    <button id="add-pizza">+</button>
+    <template id="template">
+      <article class="pizza">
+        <div class="circle">
+          <input class="diameter" type="text" value="35">
+        </div>
+        <div class="area">
+          <output class="area-value">962.11</output>
+        </div>
+        <div class="whole-cost">
+          <input class="whole-price" type="text" data-price="70.90" value="70.90">
+        </div>
+        <div class="unit-cost">
+          <output class="unit-price">0.0737</output>
+        </div>
+        <div class="amount">
+          <button class="increase-pizzas">+</button>
+          <span>1</span>
+          <button class="decrease-pizzas">−</button>
+        </div>
+      </article>
+    </template>
+  </main>
+  <footer>
+    <p class="sign">
+      Made with ♥︎&#xFE0E;<!--&#xFE0E;[Ref] stackoverflow.com/a/38452396/4824627-->
+      by <a href="https://avl.la/">Matheus Avellar</a><br><br>
+      <a href="https://twemoji.twitter.com/">Twemoji</a> &copy; 2020 Twitter, Inc
+      (CC-BY 4.0)
+    </p>
+  </footer>
+  <link rel="stylesheet" type="text/css" href="https://rsms.me/inter/inter.css">
+  <script src="script.js"></script>
+</body>
+</html>
